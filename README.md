@@ -41,11 +41,23 @@ cd GSC-Project
 pip install -r requirements.txt
 ```
 
-### 3. Run the app
+### 3. Run backend
 
 ```bash
 python app/main.py
 ```
+
+Backend defaults to `http://localhost:8001`.
+
+### 4. Run frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs on `http://localhost:8000` and calls backend APIs on `http://localhost:8001`.
 
 ---
 

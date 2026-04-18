@@ -14,10 +14,10 @@ def create_detection(db, data):
 
 
 def add_feedback(db, data):
-    result = db.feedback.insert_one(data)
+    result = db.user_feedback.insert_one(data)
     return str(result.inserted_id)
 
 
 def log_action(db, data):
-    result = db.action_logs.insert_one(data)
+    result = db.actions_taken.insert_one(data)
     return str(result.inserted_id)

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Similarity Pipeline</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Media Similarity Pipeline</h1>
+      <p class="subtitle">Upload media and track similarity against stored assets.</p>
+
+      <form id="similarity-form" class="card">
+        <label>
+          Backend URL
+          <input id="backend-url" type="text" value="http://localhost:8001" />
+        </label>
+        <label>
+          Article URL
+          <input id="article-url" type="url" placeholder="https://example.com/article" required />
+        </label>
+        <label>
+          Platform
+          <input id="platform" type="text" value="web" required />
+        </label>
+        <label>
+          Upload image/video
+          <input id="media-file" type="file" accept="image/*,video/*" required />
+        </label>
+        <button type="submit">Run Similarity Detection</button>
+      </form>
+
+      <section class="card">
+        <h2>Latest Result</h2>
+        <pre id="result">No run yet.</pre>
+      </section>
+
+      <section class="card">
+        <h2>Detection History</h2>
+        <button id="refresh-history" type="button">Refresh</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Article URL</th>
+              <th>Similarity</th>
+              <th>Matched Asset ID</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

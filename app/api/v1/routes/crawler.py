@@ -10,6 +10,7 @@ from app.schemas.crawler import (
     SearchCrawlResponse,
 )
 from app.services.crawler_service import CrawlerService
+from app.services.scrapy_crawler_service import crawl_static
 from app.services.search_service import search_and_crawl
 
 logger = logging.getLogger(__name__)
@@ -42,6 +43,18 @@ async def crawl_urls(body: CrawlRequest):
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail={"error": str(e), "code": "crawl_failed"},
+        ) from e
+
+
+@router.post("/crawl-static", response_model=CrawlResponse)
+async def crawl_static_urls(body: CrawlRequest):
+    try:
+        return CrawlResponse(results=crawl_static(body.urls))
+    except Exception as e:
+        logger.exception("static crawl failed for urls=%s", body.urls)
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"error": str(e), "code": "static_crawl_failed"},
         ) from e
 
 
