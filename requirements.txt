@@ -11,6 +11,8 @@ imagehash
 torch
 transformers
 opencv-python
+numpy
 python-multipart
 playwright
 requests
+scrapy

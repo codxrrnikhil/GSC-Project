@@ -24,8 +24,7 @@ def fingerprint_media(file: UploadFile = File(...)):
         if content_type.startswith("image/"):
             return generate_image_fingerprint(temp_path)
         if content_type.startswith("video/"):
-            embedding = generate_video_fingerprint(temp_path)
-            return {"hash": "", "embedding": embedding}
+            return generate_video_fingerprint(temp_path)
 
         raise HTTPException(status_code=400, detail="Only image or video uploads are supported.")
     finally:
