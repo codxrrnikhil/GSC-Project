@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+redis
+python-dotenv
+pydantic
+email-validator
+pymongo
+motor
+pillow
+imagehash
+torch
+transformers
+opencv-python
+python-multipart
+playwright
+requests
